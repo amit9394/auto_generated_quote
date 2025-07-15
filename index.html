@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Random Quote Generator</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f6d365, #fda085);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
+
+    .emoji {
+      position: absolute;
+      font-size: 2rem;
+      animation: float 10s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+      }
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+
+    h1 small {
+      display: block;
+      font-size: 14px;
+      color: #f2f2f2;
+    }
+
+    #quote {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 25px;
+      border-radius: 15px;
+      color: #2d3436;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 30px 0;
+      max-width: 650px;
+      text-align: center;
+      min-height: 80px;
+      backdrop-filter: blur(10px);
+    }
+
+    #getQuoteBtn {
+      background: linear-gradient(135deg, #ff6a88, #ff99ac);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      padding: 15px 50px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 20px 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255, 106, 136, 0.5);
+    }
+
+    #getQuoteBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(255, 106, 136, 0.7);
+    }
+
+    #thankYou {
+      color: #fff;
+      font-size: 20px;
+      margin-top: 15px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    }
+
+    #thankYou.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating emojis -->
+  <div class="emoji" style="left: 10%;">🦋</div>
+  <div class="emoji" style="left: 25%;">💖</div>
+  <div class="emoji" style="left: 40%;">🦋</div>
+  <div class="emoji" style="left: 60%;">💖</div>
+  <div class="emoji" style="left: 80%;">🦋</div>
+
+  <h1>✨ Random Quote Generator ✨<br><small>Created by Amit Verma</small></h1>
+
+  <p id="quote">Click the button to see a quote!</p>
+
+  <button id="getQuoteBtn" onclick="generateQuote()">Get Quote</button>
+
+  <p id="thankYou">Thank you! 💖</p>
+
+  <script>
+    const quotes = [
+      "Believe you can and you're halfway there.",
+      "The only way to do great work is to love what you do.",
+      "Dream big and dare to fail.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "Success is not in what you have, but who you are.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Great things never come from comfort zones.",
+      "Dream it. Wish it. Do it.",
+      "Stay positive, work hard, make it happen.",
+      "The harder you work for something, the greater you’ll feel when you achieve it.",
+      "The only way to do great work is to love what you do.",
+      "Dream big and dare to fail.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "Success is not in what you have, but who you are.",
+      "Your limitation—it’s only your imagination.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Great things never come from comfort zones.",
+      "Dream it. Wish it. Do it.",
+      "The harder you work for something, the greater you’ll feel when you achieve it.",
+      "Don’t stop when you’re tired. Stop when you’re done.",
+      "Wake up with determination. Go to bed with satisfaction.",
+      "Little things make big days.",
+      "It’s going to be hard, but hard does not mean impossible.",
+      "Don’t wait for opportunity. Create it.",
+      "Dream bigger. Do bigger.",
+      "Doubt kills more dreams than failure ever will.",
+      "Start where you are. Use what you have. Do what you can.",
+      "Be stronger than your excuses.",
+      "You are capable of amazing things.",
+      "Your life only gets better when you get better.",
+      "If you get tired, learn to rest, not to quit.",
+      "Stay positive, work hard, make it happen.",
+      "Act as if what you do makes a difference. It does.",
+      "Turn your wounds into wisdom.",
+      "What we think, we become.",
+      "Work hard in silence, let success make the noise.",
+      "Don’t limit your challenges. Challenge your limits.",
+      "If you can dream it, you can do it.",
+      "Difficult roads often lead to beautiful destinations.",
+      "Be so good they can’t ignore you.",
+      "Focus on being productive instead of busy.",
+      "You don’t have to be great to start, but you have to start to be great.",
+      "Mistakes are proof that you are trying.",
+      "Don’t tell people your plans. Show them your results.",
+      "If opportunity doesn’t knock, build a door.",
+      "The future depends on what you do today.",
+      "Strive for progress, not perfection.",
+      "Dare to be different."
+    ];
+
+    function generateQuote() {
+      const quoteEl = document.getElementById("quote");
+      const thankYouEl = document.getElementById("thankYou");
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+
+      quoteEl.innerText = quotes[randomIndex];
+      thankYouEl.classList.add("show");
+      setTimeout(() => {
+        thankYouEl.classList.remove("show");
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
